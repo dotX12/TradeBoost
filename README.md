@@ -11,6 +11,7 @@
 В папке settings находятся JSON файлы аккаунтов, настройте их.
 
 После настройки запустите файл main.py
+
 Наслаждайтесь!
 
 Примерное количество обменов за 30 минут - 300-400 штук в зависимости от нагрузки Steam.
@@ -33,6 +34,7 @@ Just clone this repository.
 The settings folder contains JSON files of accounts, configure them.
 
 Once configured, run the main.py file
+
 Enjoy!
 
 The approximate number of exchanges in 30 minutes is 300-400, depending on the load of Steam.
