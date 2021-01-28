@@ -1,0 +1,8 @@
+{
+    "login": "username",
+    "password": "password",
+    "API": "API_TOKEN",
+    "steamid": "STEAM_ID",
+    "shared_secret": "SHARED_SECRET_FROM_MAFILE",
+    "identity_secret": "IDENTITY_SECRET_FROM_MAFILE"
+}
