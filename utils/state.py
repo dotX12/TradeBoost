@@ -1,7 +1,6 @@
 class State:
     def __init__(self):
         self.array = []
-        self.sent = 0
 
     def add(self, item):
         if item:
@@ -16,8 +15,5 @@ class State:
             return True
         else:
             return False
-
-    def add_sent(self):
-        self.sent += 1
 
 

@@ -5,7 +5,6 @@ from logger.logger_module import *
 def send_trade(account):
     try:
         item = account.send_trades()
-        state.add_sent()
         return item
     except Exception as e:
         logger.warning(e)

@@ -10,4 +10,3 @@ def run_program(account1, account2):
 
         out2 = send_trade(account2)
         accept_trade(account1, out2)
-        print(f'Трейдов отправлено: {state.sent}')
