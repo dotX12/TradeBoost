@@ -15,7 +15,7 @@ state = State()
 class TradeBoost:
     GAME = GameOptions.STEAM
 
-    def __init__(self, cfg_account, recipient_id):
+    def __init__(self, cfg_account: str, recipient_id: str) -> None:
 
         self.recipient_id = recipient_id
         self.cfg_account = json.load(open(cfg_account))
@@ -48,13 +48,13 @@ class TradeBoost:
                     count_decline += 1
         self.adapter.info(translate.word('trade_decline').format(count_decline))
 
-    def get_item(self):
+    def get_item(self) -> str:
         try:
             items = self.account.get_my_inventory(game=self.GAME, count=15)
             item_id = choice(list(items.keys()))
             about_item = items[item_id]
 
-            if item_id and state.not_in(item_id and about_item['tradable'] == 1):
+            if item_id and state.not_in(item_id) and about_item['tradable'] == 1:
                 self.adapter.info(translate.word('item_received').format(item_id, about_item["name"]))
                 state.add(item_id)
                 return item_id
@@ -62,9 +62,9 @@ class TradeBoost:
                 return ''
         except Exception as e:
             self.adapter.warning(translate.word('bad_send').format(e))
-            pass
+            return ''
 
-    def send_trades(self):
+    def send_trades(self) -> str:
         item_id = ''
         while item_id in ['', None]:
             item_id = self.get_item()
@@ -72,7 +72,7 @@ class TradeBoost:
         asset_one = Asset(item_id, self.GAME)
 
         trade = self.account.make_offer([asset_one], [], self.recipient_id)
-        if validate_api_response(trade) is True:
+        if validate_api_response(trade):
             self.adapter.info(translate.word('sent_trade').format(trade["tradeofferid"]))
             return trade['tradeofferid']
         else:
@@ -83,12 +83,12 @@ class TradeBoost:
                 self.adapter.warning(translate.word('steam_wait'))
                 time.sleep(60)
 
-    def accept_trade(self, trade_id):
+    def accept_trade(self, trade_id: str) -> None:
         trade_info = self.account.get_trade_offer(trade_id)
         if 'offer' in trade_info['response']:
             if int(trade_info['response']['offer']['accountid_other']) == self.partner_id:
                 resp = self.account.accept_trade_offer(trade_id)
-                if validate_api_response(resp) is True:
+                if validate_api_response(resp):
                     self.adapter.info(translate.word('accepted_trade').format(trade_id))
                     item = trade_info['response']['offer']['items_to_receive'][0]['assetid']
                     state.remove(item)
