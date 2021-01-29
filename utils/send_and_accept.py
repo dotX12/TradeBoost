@@ -1,4 +1,3 @@
-from boost import state
 from logger.logger_module import *
 
 

@@ -3,8 +3,6 @@ from boost import TradeBoost
 from utils.run import run_program
 from tokens import *
 
-translate = Locale('RU')
-
 acc_1 = TradeBoost(account_1[0], account_1[1])
 acc_2 = TradeBoost(account_2[0], account_2[1])
 

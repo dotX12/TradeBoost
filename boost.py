@@ -5,9 +5,9 @@ from steampy.client import SteamClient
 from steampy.models import GameOptions, Asset
 import json
 from random import choice
+from language import translate
 from utils.vaildate_api import *
 from utils.state import *
-from main import translate
 
 state = State()
 

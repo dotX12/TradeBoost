@@ -1,4 +1,3 @@
-from boost import state
 from utils.send_and_accept import send_trade, accept_trade
 
 
