@@ -1,6 +1,5 @@
-from logger.logger_templates import Locale
-from boost import TradeBoost
-from utils.run import run_program
+from tradeboost.boost import TradeBoost
+from tradeboost.utils.run import run_program
 from tokens import *
 
 acc_1 = TradeBoost(account_1[0], account_1[1])
