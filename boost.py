@@ -78,10 +78,6 @@ class TradeBoost:
         else:
             self.adapter.warning(translate.word('bad_send').format(list(trade.values())[0]))
             self.decline_all_trades()
-            resp_summary = self.account.get_trade_offers_summary()['response']
-            if resp_summary['pending_received_count'] >= 3 or resp_summary['pending_sent_count'] >= 3:
-                self.adapter.warning(translate.word('steam_wait'))
-                time.sleep(60)
 
     def accept_trade(self, trade_id: str) -> None:
         trade_info = self.account.get_trade_offer(trade_id)
