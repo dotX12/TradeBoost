@@ -3,7 +3,7 @@
 ![Hello](https://i.imgur.com/LzANd6f.png)
 
 
-### ***  It's utility for boosting trades on Steam ***
+### ***It's utility for boosting trades on Steam***
 Using two steam accounts with a shared secret and an identity secret, we will constantly send and receive trades to each other.
 
 -------------------------
