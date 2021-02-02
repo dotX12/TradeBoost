@@ -27,8 +27,8 @@ class Locale:
                 ['Trade ID: {} не был принят по причине: {}',
                  "Trade ID: {} was not accepted due to: {}"],
             'added_accounts_to_memory':
-                ['Добавлены аккаунты {} и {} в память (файл counter.json), в ней можно посмотреть количество обменов.',
-                 'Added accounts {} and {} in memory (counter.json file), in it you can see the number of exchanges.'],
+                ['Добавлены аккаунты {} в память (файл counter.json), в ней можно посмотреть количество обменов.',
+                 'Added accounts {} in memory (counter.json file), in it you can see the number of exchanges.'],
             'already_in_memory':
                 ['Аккаунты уже были ранее добавлены в память.',
                  'Accounts have already been previously added to memory.']
