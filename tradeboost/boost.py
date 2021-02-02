@@ -16,20 +16,26 @@ class TradeBoost:
 
     def __init__(self, cfg_account: str, recipient_id: str) -> None:
 
-        self.recipient_id = recipient_id
         self.cfg_account = json.load(open(cfg_account))
+        self.login = self.cfg_account["login"]
+        self.api_token = self.cfg_account['API']
+        self.password = self.cfg_account['password']
+        self.recipient_id = recipient_id
         self.partner_id = int(self.recipient_id) - 76561197960265728
-        self.adapter = CustomAdapter(logger, {'account': self.cfg_account["login"]})
+        self.adapter = CustomAdapter(logger, {'account': self.login})
+
         try:
-            self.account = SteamClient(self.cfg_account['API'])
-            self.account.login(self.cfg_account['login'], self.cfg_account['password'], cfg_account)
+            self.account = SteamClient(self.api_token)
+            self.account.login(self.login, self.password, cfg_account)
             self.adapter.info(translate.word('good_auth'))
             self.decline_all_trades()
+
         except steampy.exceptions.InvalidCredentials as e:
             self.adapter.warning(translate.word('bad_auth').format(e))
 
     def decline_all_trades(self):
-        params = {'key': self.cfg_account['API'],
+
+        params = {'key': self.api_token,
                   'get_sent_offers': 1,
                   'get_received_offers': 0,
                   'get_descriptions': 0,
@@ -47,6 +53,7 @@ class TradeBoost:
         self.adapter.info(translate.word('trade_decline').format(count_decline))
 
     def get_item(self) -> str:
+
         try:
             items = self.account.get_my_inventory(game=self.GAME, count=15)
             item_id = choice(list(items.keys()))
